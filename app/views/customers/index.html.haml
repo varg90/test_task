@@ -1,0 +1,16 @@
+%h1.text-center.mb-2.mt-1 Customers
+.row.d-flex.justify-content-center.align-items-center
+  = form_tag customers_path, method: :get do
+    Minimum Age:
+    = text_field_tag :minimum_age, params[:minimum_age]
+    = submit_tag 'Search', class: 'btn btn-primary'
+.row
+  - @customers.each do |customer|
+    .col-6.p-3
+      .card
+        .card-body
+          %h5.card-title= customer.email
+          %p.card-text
+            Birthdate:
+            = customer.birthdate.strftime('%Y-%m-%d')
+
