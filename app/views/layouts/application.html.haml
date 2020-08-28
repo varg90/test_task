@@ -1,0 +1,16 @@
+!!!
+%html
+  %head
+    %title TestTask
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    %nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      = link_to 'Home', root_path, class: 'navbar-brand'
+      %ul.navbar-nav
+        %li.nav-item= link_to 'Orders', '#', class: 'nav-link'
+        %li.nav-item= link_to 'Order Items', '#', class: 'nav-link'
+    .container
+      = yield
