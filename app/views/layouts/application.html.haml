@@ -13,4 +13,8 @@
         %li.nav-item= link_to 'Orders', orders_path, class: 'nav-link'
         %li.nav-item= link_to 'Order Items', '#', class: 'nav-link'
     .container
+      - flash.each do |msg_type, message|
+        %div{class: "alert #{flash_class(msg_type)} flash-message"}
+          %button.close{type: 'button', data: {dismiss: 'alert'}} ×
+          = message
       = yield
