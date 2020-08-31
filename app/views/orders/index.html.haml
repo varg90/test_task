@@ -1,0 +1,17 @@
+%h1.text-center.mb-2.mt-1 Orders
+.row
+  - @orders.each do |order|
+    .col-6.p-3
+      .card
+        .card-body
+          %h5.card-title= order.number
+          %p.card-text
+            Customer:
+            = order.customer.email
+          %p.card-text
+            Date:
+            = order.date.strftime '%Y-%m-%d %T'
+          %p.card-text
+            Total:
+            = number_to_currency order.total, separator: ',', precision: 0
+

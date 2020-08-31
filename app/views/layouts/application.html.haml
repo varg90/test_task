@@ -10,7 +10,7 @@
     %nav.navbar.navbar-expand-lg.navbar-light.bg-light
       = link_to 'Home', root_path, class: 'navbar-brand'
       %ul.navbar-nav
-        %li.nav-item= link_to 'Orders', '#', class: 'nav-link'
+        %li.nav-item= link_to 'Orders', orders_path, class: 'nav-link'
         %li.nav-item= link_to 'Order Items', '#', class: 'nav-link'
     .container
       = yield
