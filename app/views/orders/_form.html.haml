@@ -1,0 +1,5 @@
+= simple_form_for order do |f|
+  = f.input :number, placeholder: 'Any string'
+  = f.input :date, as: :datetime, html5: true
+  = f.association :customer, label_method: :email, include_blank: false
+  = f.submit class: 'btn btn-lg btn-success', data: {disable_with: 'Saving Order...'}

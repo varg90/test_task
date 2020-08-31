@@ -5,12 +5,18 @@
     = text_field_tag :minimum_age, params[:minimum_age]
     = submit_tag 'Search', class: 'btn btn-primary'
 .row
-  - @customers.each do |customer|
+  - @customers.each_with_index do |customer, index|
     .col-6.p-3
       .card
         .card-body
-          %h5.card-title= customer.email
+          %h5.card-title
+            = customer.email
+            - if index.zero?
+              .float-right.text-warning TOP CUSTOMER
           %p.card-text
             Birthdate:
-            = customer.birthdate.strftime('%Y-%m-%d')
+            = customer.birthdate.strftime '%Y-%m-%d'
+          %p.card-text
+            Total Amount:
+            = number_to_currency customer.total_amount, separator: ',', precision: 0
 
