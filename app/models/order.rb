@@ -5,6 +5,6 @@ class Order < ApplicationRecord
 
   def total
     # TODO: replace it with items.sum &:cost
-    id * 100
+    id || 1 * 100
   end
 end
