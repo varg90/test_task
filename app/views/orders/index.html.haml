@@ -1,10 +1,24 @@
 %h1.text-center.mb-2.mt-1 Orders
 .row
+  .col-12
+    = link_to new_order_path do
+      %button.btn.btn-info.btn-lg.float-right Create Order
+.row
   - @orders.each do |order|
     .col-6.p-3
       .card
+        .card-header
+          = order.number
+          .float-right
+            .dropdown.show
+              %button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle{aria: {expanded: false,
+                haspopup: true}, data: {toggle: 'dropdown'}}
+                Actions
+              .dropdown-menu{aria: {labelledby: 'dropdownMenuLink'}}
+                = link_to 'Details', order_path(order), class: 'dropdown-item'
+                = link_to 'Edit Order', edit_order_path(order), class: 'dropdown-item'
+                = link_to 'Delete Order', order_path(order), method: :delete, class: 'dropdown-item', data: { confirm: 'Are you sure?' }
         .card-body
-          %h5.card-title= order.number
           %p.card-text
             Customer:
             = order.customer.email
@@ -14,4 +28,3 @@
           %p.card-text
             Total:
             = number_to_currency order.total, separator: ',', precision: 0
-
