@@ -9,7 +9,7 @@ Customer.destroy_all
 
 30.times do |i|
   Customer.create email: "user#{i + 1}@example.com",
-                  birthdate: Date.new(rand(1950..2000), rand(1..12), rand(1..28))
+                  birthdate: Date.new(rand(1950..1998), rand(1..12), rand(1..28))
 end
 
 Customer.all.each do |customer|

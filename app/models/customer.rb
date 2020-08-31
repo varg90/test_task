@@ -7,7 +7,7 @@ class Customer < ApplicationRecord
   has_many :orders, dependent: :destroy
 
   def allowed_to_order_alcohol
-    if birthdate < 21.years.from_now
+    if birthdate > 21.years.from_now
       errors.add(:birthdate, 'Grow up and come back! Sorry')
     end
   end
