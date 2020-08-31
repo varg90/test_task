@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby 2.6.3
 
-Things you may want to cover:
+* Developed on macOS 10.15.6 (19G2021), tested with Chrome Version 84.0.4147.135 (Official Build) (64-bit)
 
-* Ruby version
+* Run `bundle` command (used Bundler version 1.17.3 (2020-02-18 commit d7089abb6a))
 
-* System dependencies
+* Run `bundle exec rake db:create` or use other tool to create DB if you have a specific PostgreSQL configuration
 
-* Configuration
+* Run `bundle exec rake db:migrate` and `bundle exec rake db:seed` to fill database with tables and data
 
-* Database creation
+* Tests: `bundle exec rspec`
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Visit http://localhost:3000
