@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :customer do
-    sequence(:email) { |i| "user#{i}@example.com" }
-    birthdate { Date.new(rand(1950..1999), rand(1..12), rand(1..28)) }
+    email { Faker::Internet.email }
+    birthdate { Faker::Date.birthday(min_age: 21) }
   end
 
   trait :with_orders do

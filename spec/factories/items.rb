@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :item do
-    sequence(:title) { |i| "Item ##{i}" }
-    price { rand(0.99..149.99).round(2) }
+    title { Faker::Commerce.product_name }
+    price { Faker::Commerce.price(range: 0.1..150.0) }
   end
 end
