@@ -1,0 +1,9 @@
+%h1.text-center.mb-2.mt-1= item.title
+.row.mb-2
+  .col-12
+    = link_to edit_item_path(item) do
+      %button.btn.btn-info.btn-lg.float-right Edit Item
+%ul.list-group
+  %li.list-group-item
+    Item Price:
+    = number_to_currency item.price, separator: ',', precision: 0

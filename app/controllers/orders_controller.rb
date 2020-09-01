@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new date: Time.now
+    order.order_items.build
   end
 
   def index
@@ -23,7 +24,7 @@ class OrdersController < ApplicationController
   def update
     if order.update order_params
       flash.notice = "Order #{order.number} has been updated!"
-      redirect_to  orders_path
+      redirect_to orders_path
     else
       flash.alert = 'There was a problem updating the Order'
       render :edit
@@ -49,6 +50,7 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).
-      permit :number, :date, :customer_id
+      permit :number, :date, :customer_id,
+             order_items_attributes: [:id, :order_id, :item_id, :_destroy]
   end
 end

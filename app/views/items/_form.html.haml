@@ -1,0 +1,8 @@
+= simple_form_for item do |f|
+  = f.input :title, placeholder: 'Item Name'
+  = f.input :price do
+    .input-group
+      .input-group-prepend
+        %span.input-group-text $
+      = f.input_field :price, class: 'form-control currency'
+  = f.submit class: 'btn btn-lg btn-success', data: {disable_with: 'Saving Item...'}
