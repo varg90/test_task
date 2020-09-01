@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   helper_method :item
 
   def new
-    @item = Item.new date: Time.now
+    @item = Item.new
   end
 
   def index
@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new item_params
     if item.save
-      flash.notice = "Item #{item.number} has been created!"
+      flash.notice = "Item #{item.title} has been created!"
       redirect_to item_path(item.id)
     else
       flash.alert = 'There was a problem creating an Item'
