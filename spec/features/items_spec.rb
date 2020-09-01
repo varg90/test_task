@@ -40,7 +40,7 @@ feature 'items' do
 
       expect(page).to have_content 'Item Best thing in the World! has been created!'
       expect(page).to have_selector 'h1', text: 'Best thing in the World!'
-      expect(page).to have_content 'Item Price: $19,99'
+      expect(page).to have_content 'Item Price: $19.99'
     end
 
     scenario 'edit item' do
@@ -61,7 +61,7 @@ feature 'items' do
 
       expect(page).to have_content 'Item Another Product has been updated!'
       expect(page).to have_content 'Another Product'
-      expect(page).to have_content 'Price: $4,99'
+      expect(page).to have_content 'Price: $4.99'
     end
 
     scenario 'delete item' do

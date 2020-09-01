@@ -11,6 +11,7 @@ feature 'orders' do
            customer: first_customer,
            date: DateTime.new(2020, 9, 1, 10, 30, 15)
   end
+  let!(:item) { create :item, title: 'Best thing', price: 10.0 }
   let!(:second_customer) { create :customer, email: 'second@customer.com' }
 
   context 'from root page' do
@@ -53,16 +54,23 @@ feature 'orders' do
       expect(page).to have_field 'Number'
       expect(page).to have_field 'Date'
       expect(page).to have_select 'Customer'
+      expect(page).to have_select 'Item'
+      expect(page).to have_field 'Quantity'
 
       fill_in 'Number', with: 'freshnew786number'
       fill_in 'Date', with: '2018-09-01T15:30:15'
       select 'second@customer.com', from: 'Customer'
+      select 'Best thing', from: 'Item'
+      fill_in 'Quantity', with: 3.5
       click_on 'Create Order'
 
       expect(page).to have_content 'Order freshnew786number has been created!'
       expect(page).to have_selector 'h1', text: 'freshnew786number'
       expect(page).to have_content 'Customer email: second@customer.com'
       expect(page).to have_content 'Order date: 2018-09-01 15:30:15'
+      expect(page).to have_content 'Items:'
+      expect(page).to have_content 'Best thing (3.5)'
+      expect(page).to have_content 'Total Cost: $35.00'
     end
 
     scenario 'edit order' do
