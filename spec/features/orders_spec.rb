@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'customers' do
+feature 'orders' do
   let!(:orders) do
     create_list :order, 10
   end

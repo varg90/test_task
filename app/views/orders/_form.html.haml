@@ -2,4 +2,12 @@
   = f.input :number, placeholder: 'Any string'
   = f.input :date, as: :datetime, html5: true
   = f.association :customer, label_method: :email, include_blank: false
+  %h3 Order Items
+  .order_items
+    = f.fields_for :order_items do |oif|
+      = render 'order_item_fields', f: oif
+  %h4
+    = link_to_add_association '+ Add Item', f, :order_items,
+      'data-association-insertion-node' => '.order_items',
+      'data-association-insertion-method' => 'append'
   = f.submit class: 'btn btn-lg btn-success', data: {disable_with: 'Saving Order...'}

@@ -1,0 +1,11 @@
+.row
+  .col-5
+    .input-group
+      .col-6
+        = f.input :item_id, as: :select, collection: Item.all,
+            label_method: :title, value_method: :id, include_blank: false
+      .col-6
+        = f.input :quantity
+  .col-1
+    = link_to_remove_association f, { wrapper_class: 'row' } do
+      X

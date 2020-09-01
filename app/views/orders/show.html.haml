@@ -10,3 +10,13 @@
   %li.list-group-item
     Order date:
     = order.date.strftime '%Y-%m-%d %T'
+  %li.list-group-item
+    Items:
+    - order.order_items.each do |order_item|
+      %h3.d-inline
+        %span.badge.badge-secondary
+          = order_item&.item&.title
+          (#{order_item.quantity})
+  %li.list-group-item
+    Total Cost:
+    = number_to_currency order.total, separator: ',', precision: 2

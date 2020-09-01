@@ -1,0 +1,23 @@
+%h1.text-center.mb-2.mt-1 Items
+.row
+  .col-12
+    = link_to 'Create Item', new_item_path, class: 'btn btn-info btn-lg float-right'
+.row
+  - @items.each do |item|
+    .col-6.p-3
+      .card
+        .card-header
+          = item.title
+          .float-right
+            .dropdown.show
+              %button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle{aria: {expanded: false,
+                haspopup: true}, data: {toggle: 'dropdown'}}
+                Actions
+              .dropdown-menu{aria: {labelledby: 'dropdownMenuLink'}}
+                = link_to 'Details', item_path(item), class: 'dropdown-item'
+                = link_to 'Edit Item', edit_item_path(item), class: 'dropdown-item'
+                = link_to 'Delete Item', item_path(item), method: :delete, class: 'dropdown-item', data: { confirm: 'Are you sure?' }
+        .card-body
+          %p.card-text
+            Price:
+            = number_to_currency item.price, separator: ',', precision: 2
