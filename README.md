@@ -1,5 +1,7 @@
 # README
 
+[![Build Status](https://travis-ci.org/varg90/test_task.png?branch=master)](https://travis-ci.org/varg90/test_task)
+
 * Ruby 2.6.3
 
 * Developed on macOS 10.15.6 (19G2021), tested with Chrome Version 84.0.4147.135 (Official Build) (64-bit)
