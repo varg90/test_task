@@ -4,7 +4,11 @@ rvm:
 script:
   - bundle exec rake db:drop db:create db:schema:load RAILS_ENV=test
   - bundle exec rspec
-cache: bundler
+cache:
+  yarn: true
+  bundler: true
+  directories:
+    - node_modules
 services:
   - postgresql
 addons:
