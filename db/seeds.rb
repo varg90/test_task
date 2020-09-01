@@ -8,24 +8,24 @@
 Customer.destroy_all
 Item.destroy_all
 
-30.times do |i|
-  Customer.create email: "user#{i + 1}@example.com",
-                  birthdate: Date.new(rand(1950..1998), rand(1..12), rand(1..28))
+30.times do
+  Customer.create email: Faker::Internet.email,
+                  birthdate: Faker::Date.birthday(min_age: 21)
 end
 
-30.times do |i|
-  Item.create title: "Item number #{i + 1}",
-              price: rand(0.99..149.99).round(2)
+30.times do
+  Item.create title: Faker::Commerce.product_name,
+              price: Faker::Commerce.price(range: 0.1..150.0)
 end
 
 items = Item.all
 Customer.all.each do |customer|
-  order_1 = customer.orders.build number: (0...12).map { [('a'..'z').to_a[rand(26)], rand(0..9)].sample }.join,
-                         date: rand(2.years).seconds.ago
-  order_1.order_items.build item: items[rand(0..29)], quantity: rand(1..10)
+  order_1 = customer.orders.build number: Faker::Commerce.promotion_code,
+                         date: Faker::Date.backward(days: 30)
+  order_1.order_items.build item: items[rand(0..29)], quantity: rand(1.0..10.0)
   order_1.save
-  order_2 = customer.orders.create number: (0...12).map { [('a'..'z').to_a[rand(26)], rand(0..9)].sample }.join,
-                         date: rand(1.year).seconds.ago
-  order_2.order_items.build item: items[rand(0..29)], quantity: rand(1..10)
+  order_2 = customer.orders.create number: Faker::Commerce.promotion_code,
+                         date: Faker::Date.backward(days: 30)
+  order_2.order_items.build item: items[rand(0..29)], quantity: rand(1.0..10.0)
   order_2.save
 end
