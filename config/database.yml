@@ -82,4 +82,5 @@ production:
   <<: *default
   database: test_task_production
   username: test_task
+  url: <%= ENV['DATABASE_URL'] %>
   password: <%= ENV['TEST_TASK_DATABASE_PASSWORD'] %>

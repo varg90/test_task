@@ -16,6 +16,8 @@ cache:
   bundler: true
   directories:
     - node_modules
+    - vendor/bundle
+    - /home/travis/.rvm/
 services:
   - postgresql
 addons:
