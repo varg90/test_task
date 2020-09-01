@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.includes(:customer).order(updated_at: :desc).all
+    @orders = Order.includes(:customer, :items).order(updated_at: :desc)
   end
 
   def create

@@ -1,7 +1,7 @@
 class CustomersController < ApplicationController
   def index
     customers_request = lambda {
-      Customer.includes(:orders)
+      Customer.includes(orders: :items)
     }
     @customers = if params[:minimum_age].present?
                    customers_request.call.where('birthdate < ?', params[:minimum_age].to_i.years.ago)
