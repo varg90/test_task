@@ -3,7 +3,14 @@ rvm:
   - 2.6.3
 script:
   - bundle exec rake db:drop db:create db:schema:load RAILS_ENV=test
+  - bundle exec rails webpacker:compile
   - bundle exec rspec
+install:
+  - bundle install
+  - nvm install node
+  - node -v
+  - npm i -g yarn
+  - yarn install
 cache:
   yarn: true
   bundler: true
