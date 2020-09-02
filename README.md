@@ -14,4 +14,6 @@
 
 * Tests: `bundle exec rspec`
 
+* Start server: `bundle exec rails server`
+
 * Visit http://localhost:3000
