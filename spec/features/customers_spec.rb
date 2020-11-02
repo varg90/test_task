@@ -16,14 +16,14 @@ feature 'customers' do
 
   context 'index' do
     scenario 'visit root page' do
-      visit root_path
+      visit customers_path
       expect(page).to have_content 'Customers'
       expect(page).to have_selector '.card', count: 10
       expect(page).to have_content 'top@customer.com'
     end
 
     scenario 'filter by minimum age' do
-      visit root_path
+      visit customers_path
       expect(page).to have_content 'Customers'
       expect(page).to have_field 'Minimum Age:'
       fill_in 'Minimum Age:', with: 100
