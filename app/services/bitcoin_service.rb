@@ -37,6 +37,8 @@ class BitcoinService
   end
 
   def get_api_response_data
+    return [] if Rails.env.test?
+
     uri = URI.parse("https://#{Rails.application.credentials.coin_market_cap[:api_url]}/v1/#{endpoint}")
     query = { limit: 5000 }
     headers = { 'Accept': 'application/json',
