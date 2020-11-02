@@ -1,0 +1,16 @@
+%h1.text-center.mb-2.mt-1 Bitcoin Price
+.row.d-flex.justify-content-center.align-items-center.d-inline
+  = form_tag bitcoins_path, method: :get do
+    %label{for: 'period'} Period:
+    = select_tag :period, options_for_select(%w[year month week day hour], params[:period])
+    = submit_tag 'Update Chart', class: 'btn btn-primary'
+
+= line_chart @bitcoin_data, prefix: '$', thousands: ',',
+  title: "Bitcoin price for period: #{params[:period] || 'year'}",
+  colors: ['green']
+
+
+%script{src: 'https://files.coinmarketcap.com/static/widget/currency.js', type: 'text/javascript'}
+.mt-5
+  .coinmarketcap-currency-widget{data: {base: 'USD', currencyid: '1', marketcap: 'true', rank: 'true', secondary: '',
+    stats: 'USD', statsticker: 'true', ticker: 'true', volume: 'true'}}
