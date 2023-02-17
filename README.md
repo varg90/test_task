@@ -18,4 +18,4 @@
 
 * Visit http://localhost:3000
 
-* Live server on Heroku: https://varg90-test-task.herokuapp.com/
+* ~~Live server on Heroku: https://varg90-test-task.herokuapp.com/~~
